@@ -1,0 +1,12 @@
+{
+  "name": "Priaid angular demo app",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.4.4"
+  },
+  "devDependencies": {
+    "angular": "~1.4.4",
+    "bootstrap": "~3.3.5"
+  }
+}

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Priaid Client - AngularJS Version 1.0</title>
+    <style>
+        .data {
+            background-color: inherit;
+            border-radius: 0px;
+            height: 150px;
+            color: inherit;
+            border: 0px;
+        }
+
+        .single-number {
+            width: 60px;
+        }
+    </style>
+</head>
+
+<body ng-app="ngApp" ng-controller="ngAppDiagnosisController">
+    <script src="lib/angular.min.js"></script>
+    <link rel="stylesheet" href="lib/bootstrap.min.css">
+    <!-- App -->
+    <script src="scripts/controllers/diagnosiscontroller.js"></script>
+    <script src="scripts/utils/apiurls.js"></script>
+    <script src="scripts/services/apiServices.js"></script>
+    <script src="scripts/factories/tokenFactory.js"></script>
+    <script src="scripts/factories/languageFactory.js"></script>
+    <script src="scripts/factories/formatFactory.js"></script>
+    <div class="container">
+        <h3>Priaid health service angular demo</h3>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Enter your token here to start demo. You can get a token <a href="https://sandbox-authservice.priaid.ch/docs.html" target="_blank">here</a>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <textarea rows='8' class="form-control" ng-model='token' placeholder="Enter your token here"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Language</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control-static" ng-model="lang" data-ng-options="lang.value as lang.name for lang in languages" ng-change="changeLanguage()"></select>
+                                </div>
+                                <label class="col-sm-4 control-label">Format</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control-static" ng-model="format" data-ng-options="format.value as format.name for format in formats" ng-change="changeFormat()"></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <a ng-click="loadSymptoms()" role="button" class="btn btn-success">
+                    GET
+                </a>
+                <a ng-click="loadSymptoms()" role="button">
+                    /symptoms
+                </a>
+            </div>
+            <div class="panel-body">
+                <p>Symptoms can be either called to receive the full list of symptoms or a subset of symptoms (e.g. all symptoms of a body sublocation).<p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="alert alert-success" ng-show="symptoms != ''">
+                                <pre class="data">{{symptoms | json}}</pre>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="alert alert-warning" ng-show="symptomsConfig != ''">
+                                <pre class="data">{{symptomsConfig | json}}</pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alert alert-danger" ng-show="symptomsError != ''">
+                        <pre class="data">{{symptomsError | json}}</pre>
+                    </div>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <a ng-click="loadIssues()" role="button" class="btn btn-success">
+                    GET
+                </a>
+                <a ng-click="loadSymptoms()" role="button">
+                    /issues
+                </a>
+            </div>
+            <div class="panel-body">
+                <p>Issues can be either called to receive the full list of issues or a subset of issues (e.g. all issues of a diagnosis).</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="alert alert-success" ng-show="issues != ''">
+                            <pre class="data">{{issues | json}}</pre>
+                        </div>  
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-warning" ng-show="issuesConfig != ''">
+                            <pre class="data">{{issuesConfig | json}}</pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="alert alert-danger" ng-show="issuesError != ''">
+                    <pre class="data">{{issuesError | json}}</pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <a ng-click="loadIssueInfo(issueId)" role="button" class="btn btn-success">
+                    GET
+                </a>
+                <a ng-click="loadIssueInfo(issueId)" role="button">
+                    /issues/{{issueId}}/info
+                </a>
+                <div class="pull-right">
+                    Issue id:<input type='number' ng-model='issueId' class='single-number' />
+                </div>
+            </div>
+            <div class="panel-body">
+                <p>Issue info can be called to receive all information about a health issue. The short description gives a short overview. A longer information can consist of "Description", "MedicalCondition", "TreatmentDescription".</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="alert alert-success" ng-show="issueInfo != ''">
+                            <pre class="data">{{issueInfo | json}}</pre>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-warning" ng-show="issueInfoConfig != ''">
+                            <pre class="data">{{issueInfoConfig | json}}</pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="alert alert-danger" ng-show="issueInfoError != ''">
+                    <pre class="data">{{issueInfoError | json}}</pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <a ng-click="loadDiagnosis(selectedSymptoms,gender,yearOfBirth)" role="button" class="btn btn-success">
+                    GET
+                </a>
+                <a ng-click="loadDiagnosis(selectedSymptoms,gender,yearOfBirth)" role="button">
+                    /diagnosis
+                </a>
+                <div class="pull-right">
+                    Symptoms (comma separated ids):<input type='text' ng-model='selectedSymptoms' />
+                    |
+                    <label>
+                        <input type="radio" ng-model="gender.value" value="male">
+                        Male
+                    </label>
+                    <label>
+                        <input type="radio" ng-model="gender.value" value="female">
+                        Female
+                    </label>
+                    |
+                    Year of born:<input type='number' ng-model='yearOfBirth' class='single-number' />
+                </div>
+            </div>
+            <div class="panel-body">
+                <p>The diagnosis is the core function of the symptom-checker to compute the potential health issues based on a set of symptoms, gender and age.</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="alert alert-success" ng-show="diagnosis != ''">
+                            <pre class="data">{{diagnosis | json}}</pre>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-warning" ng-show="diagnosisConfig != ''">
+                            <pre class="data">{{diagnosisConfig | json}}</pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="alert alert-danger" ng-show="diagnosisError != ''">
+                    <pre class="data">{{diagnosisError | json}}</pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <a ng-click="loadSpecialisations(selectedSymptoms,gender,yearOfBirth)" role="button" class="btn btn-success">
+                    GET
+                </a>
+                <a ng-click="loadSpecialisations(selectedSymptoms,gender,yearOfBirth)" role="button">
+                    /specialisations
+                </a>
+                <div class="pull-right">
+                    Symptoms (comma separated ids):<input type='text' ng-model='selectedSymptoms' />
+                    |
+                    <label>
+                        <input type="radio" ng-model="gender.value" value="male">
+                        Male
+                    </label>
+                    <label>
+                        <input type="radio" ng-model="gender.value" value="female">
+                        Female
+                    </label>
+                    |
+                    Year of born:<input type='number' ng-model='yearOfBirth' class='single-number' />
+                </div>
+            </div>
+            <div class="panel-body">
+                <p>The diagnosis is the core function of the symptom-checker to compute the potential health issues based on a set of symptoms, gender and age, but instead of getting computed diagnosis, you can also get list of suggested specialisations for calulated diseases</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="alert alert-success" ng-show="specialisations != ''">
+                            <pre class="data">{{specialisations | json}}</pre>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-warning" ng-show="specialisationsConfig != ''">
+                            <pre class="data">{{specialisationsConfig | json}}</pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="alert alert-danger" ng-show="specialisationsError != ''">
+                    <pre class="data">{{specialisationsError | json}}</pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <a ng-click="loadProposedSymptoms(selectedSymptoms,gender,yearOfBirth)" role="button" class="btn btn-success">
+                    GET
+                </a>
+                <a ng-click="loadProposedSymptoms(selectedSymptoms,gender,yearOfBirth)" role="button">
+                    /symptoms/proposed
+                </a>
+                <div class="pull-right">
+                    Symptoms (comma separated ids):<input type='text' ng-model='selectedSymptoms' />
+                    |
+                    <label>
+                        <input type="radio" ng-model="gender.value" value="male">
+                        Male
+                    </label>
+                    <label>
+                        <input type="radio" ng-model="gender.value" value="female">
+                        Female
+                    </label>
+                    |
+                    Year of born:<input type='number' ng-model='yearOfBirth' class='single-number' />
+                </div>
+            </div>
+            <div class="panel-body">
+                <p>The proposed symptoms can be called to request additional symptoms which can be related to the given symptoms in order to refine the diagnosis.</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="alert alert-success" ng-show="proposedSymptoms != ''">
+                            <pre class="data">{{proposedSymptoms | json}}</pre>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-warning" ng-show="proposedSymptomsConfig != ''">
+                            <pre class="data">{{proposedSymptomsConfig | json}}</pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="alert alert-danger" ng-show="proposedSymptomsError != ''">
+                    <pre class="data">{{proposedSymptomsError | json}}</pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <a ng-click="loadBodyLocations()" role="button" class="btn btn-success">
+                    GET
+                </a>
+                <a ng-click="loadBodyLocations()" role="button">
+                    /body/locations
+                </a>
+            </div>
+            <div class="panel-body">
+                <p>Body locations can be called to receive all the body locations</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="alert alert-success" ng-show="bodyLocations != ''">
+                            <pre class="data">{{bodyLocations | json}}</pre>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-warning" ng-show="bodyLocationsConfig != ''">
+                            <pre class="data">{{bodyLocationsConfig | json}}</pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="alert alert-danger" ng-show="bodyLocationsError != ''">
+                    <pre class="data">{{bodyLocationsError | json}}</pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <a ng-click="loadBodySublocations(bodyLocationId)" role="button" class="btn btn-success">
+                    GET
+                </a>
+                <a ng-click="loadBodySublocations(bodyLocationId)" role="button">
+                    /body/locations/{{bodyLocationId}}
+                </a>
+                <div class="pull-right">
+                    Body location id:<input type='number' ng-model='bodyLocationId' class='single-number' />
+                </div>
+            </div>
+            <div class="panel-body">
+                <p>Body sublocations can be called to receive all the body sub locations from a body location.</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="alert alert-success" ng-show="bodySublocations != ''">
+                            <pre class="data">{{bodySublocations | json}}</pre>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-warning" ng-show="bodySublocationsConfig != ''">
+                            <pre class="data">{{bodySublocationsConfig | json}}</pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="alert alert-danger" ng-show="bodySublocationsError != ''">
+                    <pre class="data">{{bodySublocationsError | json}}</pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+
+                <a ng-click="loadBodySublocationSymptoms(bodySublocationId,selectorStatus)" role="button" class="btn btn-success">
+                    GET
+                </a>
+                <a ng-click="loadBodySublocationSymptoms(bodySublocationId,selectorStatus)" role="button">
+                    /symptoms/{{bodySublocationId}}/{{selectorStatus.value}}
+                </a>
+                <div class="pull-right">
+                    <label>
+                        <input type="radio" ng-model="selectorStatus.value" value="man">
+                        Man
+                    </label>
+                    <label>
+                        <input type="radio" ng-model="selectorStatus.value" value="woman">
+                        Woman
+                    </label>
+                    <label>
+                        <input type="radio" ng-model="selectorStatus.value" value="boy">
+                        Boy
+                    </label>
+                    <label>
+                        <input type="radio" ng-model="selectorStatus.value" value="girl">
+                        Girl
+                    </label>
+                    |
+                    Body sublocation id:<input type='number' ng-model='bodySublocationId' class='single-number' />
+                </div>
+            </div>
+            <div class="panel-body">
+                <p>Symptoms in body sublocations can be called to receive all the symptoms in a body sub location.</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="alert alert-success" ng-show="bodySublocationSymptoms != ''">
+                            <pre class="data">{{bodySublocationSymptoms | json}}</pre>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-warning" ng-show="bodySublocationSymptomsConfig != ''">
+                            <pre class="data">{{bodySublocationSymptomsConfig | json}}</pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="alert alert-danger" ng-show="bodySublocationSymptomsError != ''">
+                    <pre class="data">{{bodySublocationSymptomsError | json}}</pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <a ng-click="loadRedFlagText(symptomId)" role="button" class="btn btn-success">
+                    GET
+                </a>
+                <a ng-click="loadRedFlagText(symptomId)" role="button">
+                    /redflag
+                </a>
+                <div class="pull-right">
+                    Symptom id:<input type='number' ng-model='symptomId' />
+                </div>
+            </div>
+            <div class="panel-body">
+                <p>Red flag texts are recommendations to the patient for a higher urgency or severeness of the possible symptoms. As an example a patient with pain in the breast might have a heart attack and therefore the patient should be warned about the urgency and severeness of the matter.</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="alert alert-success" ng-show="redFlagText != ''">
+                            <pre class="data">{{redFlagText | json}}</pre>
+                        </div>   
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-warning" ng-show="redFlagTextConfig != ''">
+                            <pre class="data">{{redFlagTextConfig | json}}</pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="alert alert-danger" ng-show="redFlagTextError != ''">
+                    <pre class="data">{{redFlagTextError | json}}</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
