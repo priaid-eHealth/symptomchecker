@@ -168,6 +168,23 @@ namespace Priaid.Diagnosis.Client
         }
 
         /// <summary>
+        /// Load calculated list of specialisations for selected parameters
+        /// </summary>
+        /// <param name="selectedSymptoms">List of selected symptom ids</param>
+        /// <param name="gender">Selected person gender (Male, Female)</param>
+        /// <param name="yearOfBirth">Selected person year of born</param>
+        /// <returns>Returns calculated list of specialisations for selected parameters</returns>
+        public List<DiagnosedSpecialisation> LoadSpecialisations(List<int> selectedSymptoms, Gender gender, int yearOfBirth)
+        {
+            if (selectedSymptoms == null || selectedSymptoms.Count == 0)
+                throw new ArgumentNullException("selectedSymptoms  Can not be null or empty");
+
+            string serializedSymptoms = this._serializer.Serialize(selectedSymptoms);
+            string action = string.Format("diagnosis/specialisations?symptoms={0}&gender={1}&year_of_birth={2}", serializedSymptoms, gender.ToString(), yearOfBirth);
+            return this.LoadFromWebService<List<DiagnosedSpecialisation>>(action);
+        }
+
+        /// <summary>
         /// Load human body locations
         /// </summary>
         /// <returns>Returns list of human body locations</returns>

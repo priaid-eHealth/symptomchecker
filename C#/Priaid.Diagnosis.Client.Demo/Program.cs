@@ -138,6 +138,7 @@ namespace SampleDiagnosisClient
 
         static List<int> LoadDiagnosis(List<HealthSymptomSelector> selectedSymptoms)
         {
+            WriteHeaderMessage("Diagnosis");
             List<HealthDiagnosis> diagnosis = _diagnosisClient.LoadDiagnosis(selectedSymptoms.Select(x => x.ID).ToList(), Gender.Male, 1988);
 
             if (diagnosis == null || diagnosis.Count == 0)
@@ -147,9 +148,26 @@ namespace SampleDiagnosisClient
             }
 
             foreach (var d in diagnosis)
-                Console.WriteLine("{0} - {1}% \nSpecialisations : {2}\n", d.Issue.Name, d.Issue.Accuracy, string.Join(",", d.Specialisation.Select(x => x.Name)));
+                Console.WriteLine("{0} - {1}% \nICD: {2}{3}\nSpecialisations : {4}\n", d.Issue.Name, d.Issue.Accuracy,d.Issue.Icd, d.Issue.IcdName, string.Join(",", d.Specialisation.Select(x => x.Name)));
 
             return diagnosis.Select(x => x.Issue.ID).ToList();
+        }
+
+        static void LoadSpecialisations(List<HealthSymptomSelector> selectedSymptoms)
+        {
+            WriteHeaderMessage("Specialisations");
+
+            List<DiagnosedSpecialisation> specialisations = _diagnosisClient.LoadSpecialisations(selectedSymptoms.Select(x => x.ID).ToList(), Gender.Male, 1988);
+
+            if (specialisations == null || specialisations.Count == 0)
+            {
+                WriteHeaderMessage(string.Format("No specialisations for symptom {0}", selectedSymptoms.First().Name));
+                return;
+            }
+
+            foreach (var s in specialisations)
+                Console.WriteLine("{0} - {1}%", s.Name, s.Accuracy);
+
         }
 
         static void LoadRedFlag(HealthSymptomSelector selectedSymptom)
@@ -202,6 +220,9 @@ namespace SampleDiagnosisClient
 
             // Load diagnosis
             List<int> diagnosis = LoadDiagnosis(selectedSymptoms);
+
+            // Load specialisations
+            LoadSpecialisations(selectedSymptoms);
 
             // Load issue info
             foreach (var issueId in diagnosis)

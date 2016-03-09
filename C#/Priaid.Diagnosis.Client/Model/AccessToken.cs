@@ -8,7 +8,14 @@ namespace Priaid.Diagnosis.Client.Model
 {
     public class AccessToken
     {
+        /// <summary>
+        /// Token string
+        /// </summary>
         public string Token { get; set; }
+
+        /// <summary>
+        /// Valid period of token in seconds
+        /// </summary>
         public int ValidThrough { get; set; }
     }
 }

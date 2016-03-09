@@ -8,6 +8,11 @@ namespace Priaid.Diagnosis.Client.Model
 {
     public class HealthSymptomSelector : HealthItem
     {
+        ///<summary>
+        /// Professional name
+        /// </summary>
+        public String ProfName { get; set; }
+
         /// <summary>
         /// Rad flag indicator
         /// </summary>
