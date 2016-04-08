@@ -1,0 +1,558 @@
+﻿/**
+ * ApiMedic.com Sample Avatar, a demo implementation of the ApiMedic.com Symptom Checker by priaid Inc, Switzerland
+ * 
+ * Copyright (C) 2012 priaid inc, Switzerland
+ * 
+ * This file is part of The Sample Avatar.
+ * 
+ * This is free implementation: you can redistribute it and/or modify it under the terms of the
+ * GNU General Public License Version 3 as published by the Free Software Foundation.
+ * 
+ * The ApiMedic.com Sample Avatar is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * 
+ * See the GNU General Public License for more details. You should have received a copy of the GNU
+ * General Public License along with ApiMedic.com. If not, see <http://www.gnu.org/licenses/>.
+ * 
+ * Authors: priaid inc, Switzerland
+ */
+body{
+    font-family:Helvetica, Arial, sans-serif;
+    font-size:12px;
+}
+img{
+    border:none;
+}
+.selector_container table{
+    background-color:#fff;
+}
+
+td.status-container
+{
+    /*float:left;
+    text-align:center;*/
+    vertical-align:top;
+    padding:5px;
+}
+    td.status-container .status-change-link
+    {
+        display:block;
+        text-align:center;
+        padding:2px 5px;
+        border-radius: 6px;
+        opacity:0.6;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+        /* IE 5-7 */
+        filter: alpha(opacity=60);
+        /* Netscape */
+        -moz-opacity: 0.6;
+        /* Safari 1.x */
+        -khtml-opacity: 0.6;
+    }
+    td.status-container .status-change-link:hover
+    {
+        opacity:1;
+    }
+td.avatar-container
+{
+    height:325px;
+    position: absolute!important;
+}
+    td.avatar-container div{
+        position: absolute!important;
+        bottom:0px;
+    }
+.skin-link{
+	display: inline;
+    position: absolute;
+    color: #525252;
+    left: 0;
+    bottom: -55px;
+    width: 130px;
+    text-decoration:none;
+	padding-bottom: 0;
+	text-align: center;
+}
+.skin-link:hover{
+    color: black;
+}
+.skin-image{
+	margin-top: 5px;
+	width:110px;
+	height: auto;
+}
+
+.child-gender-selector-container
+{
+    text-align:center;
+	font-size: 14px;
+}
+.child-gender-selector-container .child-gender-selector
+{
+    padding:0px 2px;
+    display:inline;
+    color:#525252;
+}
+
+input.symptom-search
+{
+    border-color: #efefef;
+    box-shadow: none;
+    font-style:italic;
+    width:100%;
+    height: 30px;
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+    color: #555;
+    vertical-align: middle;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+}
+.year-container
+{
+    padding: 5px 0;
+}
+.progress
+{
+    background: #f0f0f0;
+    width: 100%;
+    height: 20px;
+    -webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,0.15);
+    box-shadow: inset 0 -1px 0 rgba(0,0,0,0.15);
+    -webkit-transition: width .6s ease;
+    transition: width .6s ease;
+    border-radius:2px;
+}
+
+.progress .progress-bar
+{
+    float: left;
+    width: 0;
+    height: 20px;
+    font-size: 12px;
+    line-height: 20px;
+    color: #fff;
+    text-align: center;
+    background-color: #428bca;
+    border-bottom-left-radius:2px;
+    border-top-left-radius:2px;
+}
+
+.loader
+{
+    position:relative;
+    width:100%;
+    height:20px;
+    z-index:1041;
+    background-color:white;
+    background-image: url('images/ajax-loader.gif');
+    background-repeat: no-repeat;
+    background-position: center center;
+    opacity:0.8;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+    /* IE 5-7 */
+    filter: alpha(opacity=80);
+    /* Netscape */
+    -moz-opacity: 0.8;
+    /* Safari 1.x */
+    -khtml-opacity: 0.8;
+}
+
+.location_list, location_list li, .symptom_list, .symptom_list li, .selected_list, .selected_list li,.proposed_list, proposed_list li, .diagnosis_list, .diagnosis_list li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  color:#555;
+}
+
+.location_list li {
+  margin: 0 0 0 0em;
+  font-size:1.4em;
+  cursor:pointer;
+}
+
+.location_list li:hover {
+  color: #4193d0;
+}
+.location_list li:before {
+  content: '\f054'; /* fa-chevron-right */
+  font-family: 'FontAwesome';
+  float: left;
+  padding-right:5px;
+}
+
+.location_list li.open {
+    color:black;
+}
+.location_list li.open:before {
+  content: '\f078'; /* fa-chevron-down */
+  padding-right:5px;
+}
+.location_list .sublocation{
+    border-bottom: 1px solid #dfdfdf;
+    padding:5px 0px;
+    cursor:pointer;
+}
+
+.symptom_list li, .selected_list li, .proposed_list li {
+  padding:2px 0px;
+  cursor:pointer;
+}
+
+.selected_list li
+{
+    cursor:default;
+}
+.selected_list li i{
+    float:right;
+    color:red;
+    cursor:pointer;
+}
+
+.symptom_list {
+  margin-top: 5px;
+}
+.symptom_list li {
+  margin-left: 1.2em;
+  font-size:0.8em;
+}
+.symptom_list li:before {
+  content: '\f055'; /* fa-plus-circle */
+  font-family: 'FontAwesome';
+  float: left;
+  margin-left: -1em;
+  padding:0px;
+}
+
+.proposed_list
+{
+    margin-top:5px;
+}
+.proposed_list li {
+  margin-left: 1.5em;
+}
+.proposed_list li:hover {
+  color:#4193d0;
+}
+
+.proposed_list li:before {
+  content: '\f055'; /* fa-plus-circle */
+  font-family: 'FontAwesome';
+  float: left;
+  margin-left: -1.5em;
+}
+
+.spec_list {
+  margin: 0.5em;
+  padding:0;
+}
+.spec_list li {
+  padding-top: 5px;
+}
+.spec_list li a {
+  margin-left: 10px;
+  color: #4193d0;
+  text-decoration:none;
+}
+.spec_list li a:hover {
+    color: #4d4d4d;
+}
+
+.spec_list li a:before {
+  content: '\f0f0'; /* fa-user-md */
+  font-family: 'FontAwesome';
+  float: left;
+  margin-left: -0.5em;
+}
+
+.suggested_spec {
+  margin-left: 5px;
+  color: #4193d0;
+  text-decoration:none;
+}
+
+.suggested_spec:before {
+  content: '\f0f0'; /* fa-user-md */
+  font-family: 'FontAwesome';
+  float: left;
+}
+
+h4.header {
+    color: #4d4d4d;
+    font-size:1.4em;
+    margin:0;
+}
+
+h4.symptom_list_header
+{
+    background-color: #eee;
+    padding:0.5em 1em;
+}
+
+h4.diagnosis_name_header
+{
+    padding:0.5em 0em 0em 0em;
+    margin-right:30px;
+}
+h4.diagnosis_profname_header
+{
+    padding:0.1em 0em 0.5em 0em;
+    margin-right:30px;
+	font-weight:normal;
+}
+h4.diagnosis_name_header .fa
+{
+    float:right;
+    margin-right:-30px;
+    cursor:pointer;
+    color: #4193d0;
+}
+
+span.message{
+    float: left;
+    margin: 5px;
+    padding: 10px;
+    border-width: 1px;
+    border-style: solid;
+}
+.info{
+    
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+}
+.warning
+{
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+.bordered-box{
+    border: 1px #dfdfdf solid;
+}
+.box-white
+{
+    background-color:white;
+}
+.box-inactive
+{
+    opacity:0.5;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    /* IE 5-7 */
+    filter: alpha(opacity=50);
+    /* Netscape */
+    -moz-opacity: 0.5;
+    /* Safari 1.x */
+    -khtml-opacity: 0.5;
+}
+
+table.container-table { 
+    border-spacing: 5px;
+    border-collapse: separate;
+    background-color:#ebeff2;
+    height:500px;
+}
+.container-table .td-header
+{
+    height:15px;
+}
+.container-table .td-header h4
+{
+    padding:5px;
+}
+
+.container-table .selector_container
+{
+    padding:5px;
+    margin:-5px;
+}
+
+.width25{
+    width:25%;
+}
+.width50{
+    width:50%;
+}
+
+span.twitter-typeahead .tt-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  list-style: none;
+  font-size: 14px;
+  text-align: left;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  background-clip: padding-box;
+}
+span.twitter-typeahead .tt-suggestion > p {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1;
+  color: #333333;
+  white-space: nowrap;
+}
+span.twitter-typeahead .tt-suggestion > p:hover,
+span.twitter-typeahead .tt-suggestion > p:focus {
+  color: #ffffff;
+  text-decoration: none;
+  outline: 0;
+  background-color: #428bca;
+}
+span.twitter-typeahead .tt-suggestion.tt-cursor {
+  color: #ffffff;
+  background-color: #428bca;
+}
+span.twitter-typeahead {
+  width: 100%;
+}
+.input-group span.twitter-typeahead {
+  display: block !important;
+}
+.input-group span.twitter-typeahead .tt-dropdown-menu {
+  top: 32px !important;
+}
+.input-group.input-group-lg span.twitter-typeahead .tt-dropdown-menu {
+  top: 44px !important;
+}
+.input-group.input-group-sm span.twitter-typeahead .tt-dropdown-menu {
+  top: 28px !important;
+}
+#txtSearchSymptoms
+{
+    background-color:white!important;
+    padding:5px;
+	width: 90%;
+}
+
+.info_page
+{
+    position:absolute;
+    left:0px;
+    right:0px;
+    top:0px;
+    bottom:0px;
+    background-color:white;
+    display:none;
+    opacity:0.95;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=95)";
+    /* IE 5-7 */
+    filter: alpha(opacity=95);
+    /* Netscape */
+    -moz-opacity: 0.95;
+    /* Safari 1.x */
+    -khtml-opacity: 0.95;
+    padding:10px;
+    border: 1px solid #dfdfdf;
+}
+.btn_info{
+    position:absolute;
+    top:20px;
+    font-size:30px;
+    cursor:pointer;
+}
+#btnCloseInfo
+{
+    right:20px;
+}
+#btnPrintInfo
+{
+    right:50px;
+}
+#redFlagContent
+{
+    font-size:1.4em;
+    padding:10px 10px;
+    margin-top:30px;
+    border: 1px solid;
+    font-weight:bold;
+}
+#redFlagContent
+{
+    font-size:1.4em;
+    padding:10px 10px;
+    margin-top:30px;
+    border: 1px solid;
+    font-weight:bold;
+}
+
+#redFlagContent:before
+{
+  content: '\f071'; /* fa-warning */
+  font-family: 'FontAwesome';
+}
+
+#btnCloseRedFlag
+{
+    float:right;
+    color: #a94442;
+    margin:5px;
+    cursor:pointer;
+}
+#terms
+{
+    white-space: normal;
+}
+#terms label
+{
+    font-weight:normal;
+    display:inline;
+    word-break: break-word;
+}
+#terms a {
+    font-weight:700;
+    color: #8a6d3b;
+    text-decoration:underline;
+}
+#terms input {
+    white-space: normal;
+}
+
+#symptomSelector{
+	padding-left: 0;
+	padding-right: 0;
+}
+
+#symptomList{
+	padding-left: 5px;
+	padding-right: 0;
+}
+
+.year-text{
+	padding-left: 5px;
+	padding-right: 5px;
+}
+.priaid-powered{
+	float: right;
+	color: gray;
+	font-size: 12px;
+	font-family:Arial;
+	text-decoration: none;
+	text-align:center;
+	padding-top:8px;
+}
+
+.logo{
+	float: right;
+	width: 82px;
+	height: 28px;
+	vertical-align:middle;
+}
+
+
+
