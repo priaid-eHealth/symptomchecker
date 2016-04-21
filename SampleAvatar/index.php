@@ -24,33 +24,38 @@
     <title></title>
     <link rel="stylesheet" type="text/css" href="symptom_selector/selector.css?v=1">
     <link rel="stylesheet" type="text/css" href="symptom_selector/fontawesome/assets/css/font-awesome.min.css" />
-    <script src="libs/jquery.js"></script>
+    <script src="libs/jquery-1.12.2.min.js"></script>
     <script src="libs/json2.js"></script><!-- json for ie7 -->
-    <script src="libs/jquery.imagemapster.js?v=1.1"></script>
+    <script src="libs/jquery.imagemapster.min.js?v=1.1"></script>
     <script src="libs/typeahead.bundle.js"></script>
     
     <script src="symptom_selector/selector.js?v=3.3"></script>
 
 	<?php 
-	
-	require 'token_generator.php';
-	$tokenGenerator = new TokenGenerator("test_priaid","secret_priaid","https://test-authservice.priaid.ch/login");
-    $token = $tokenGenerator->loadToken();
 
-	if ( ! isset( $_COOKIE["userToken"] ))
+	session_start();
+
+	if ( !isset( $_SESSION['userToken']) || !isset( $_SESSION['tokenExpireTime']) || time() >= $_SESSION['tokenExpireTime'] )
 	{
-		setcookie("userToken", $token->{'Token'}, $token->{'ValidThrough'}, "/", false);
+		require 'token_generator.php';
+		$tokenGenerator = new TokenGenerator("YOUR_USERNAME","YOUR_PASSWORD","https://sandbox-authservice.priaid.ch/login");
+		$token = $tokenGenerator->loadToken();
+		$_SESSION['userToken'] = $token->{'Token'};
+		$_SESSION['tokenExpireTime'] = time() + $token->{'ValidThrough'};
 	}
+
+	$token = $_SESSION['userToken'];
 	?>
 
 	<script type="text/javascript">
 
-		var userToken = getCookie("userToken");
+		var userToken = <?php echo "'".$token."'" ?>;
+		
         $(document).ready(function () {
             $("#symptomSelector").symptomSelector(
             {
                 mode: "diagnosis",
-                webservice: "https://test-healthservice.priaid.ch",
+                webservice: "https://sandbox-healthservice.priaid.ch",
                 language: "en-gb",
                 specUrl: "sampleSpecialisationPage",
                 accessToken: userToken

@@ -67,7 +67,7 @@ td.avatar-container
     position: absolute;
     color: #525252;
     left: 0;
-    bottom: -55px;
+    bottom: -65px;
     width: 130px;
     text-decoration:none;
 	padding-bottom: 0;
@@ -353,7 +353,7 @@ table.container-table {
     border-spacing: 5px;
     border-collapse: separate;
     background-color:#ebeff2;
-    height:500px;
+    height:550px;
 }
 .container-table .td-header
 {
