@@ -33,7 +33,7 @@
 
 	<?php 
 
-	session_start();
+	// session_start(); // this causes some issues with certain servers, try this if it's working with this line or not.
 
 	if ( !isset( $_SESSION['userToken']) || !isset( $_SESSION['tokenExpireTime']) || time() >= $_SESSION['tokenExpireTime'] )
 	{
