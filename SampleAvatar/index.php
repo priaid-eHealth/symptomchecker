@@ -81,8 +81,8 @@
         </tr>
     </table>
     <div>
-        <a target="_blank" href="http://corporate.priaid.ch"><img class="logo" alt="priaid" src="symptom_selector/images/logo.jpg" /></a>
-        <span ><a class="priaid-powered" target="_blank" href="http://corporate.priaid.ch"> powered by  </a> </span>
+        <a target="_blank" href="http://apimedic.com"><img class="logo" alt="ApiMedic by priaid" src="symptom_selector/images/logo.jpg" /></a>
+        <span ><a class="priaid-powered" target="_blank" href="http://apimedic.com"> powered by  </a> </span>
     </div>
 </body>
 </html>
