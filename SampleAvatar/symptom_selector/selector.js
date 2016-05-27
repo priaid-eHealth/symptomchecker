@@ -159,7 +159,7 @@ var mode = "diagnosis";
 
     var _defaultAdultYear = n - 25;
     var _defaultChildYear = n - 8;
-    var _edgeYears = n - 16;
+    var _edgeYears = n - 11;
 
     var _statusLinkBorderColor = "cccccc";
     var pathToImages = "symptom_selector/images";
