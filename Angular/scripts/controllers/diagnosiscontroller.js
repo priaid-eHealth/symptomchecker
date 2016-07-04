@@ -60,7 +60,7 @@
 		vm.redFlagTextError = '';
 		vm.symptomId = 238;
 		
-		vm.languages=[{value:"en-gb",name:"en-gb"},{value:"de-ch",name:"de-ch"},{value:"tr-tr",name:"tr-tr"}]
+		vm.languages=[{value:"en-gb",name:"en-gb"},{value:"de-ch",name:"de-ch"},{value:"es-es",name:"es-es"},{value:"tr-tr",name:"tr-tr"}]
 		//Setting first option as selected in configuration select
 		vm.lang = vm.languages[0].value;
 		
