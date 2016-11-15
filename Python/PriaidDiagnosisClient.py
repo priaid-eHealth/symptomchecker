@@ -31,7 +31,7 @@ class DiagnosisClient:
         rawHashString = hmac.new(bytes(password, encoding='utf-8'), url.encode('utf-8')).digest()
         computedHashString = base64.b64encode(rawHashString).decode()
 
-        bearer_credentials = 'test_priaid:' + computedHashString
+        bearer_credentials = username + ':' + computedHashString
         postHeaders = {
                 'Authorization': 'Bearer {}'.format(bearer_credentials)
         }
