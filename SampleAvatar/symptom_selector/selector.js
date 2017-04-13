@@ -1179,7 +1179,7 @@ var mode = "diagnosis";
             litDescription = resObj.genDescription;
             litOccurrence = resObj.genOccurrence;
             litSymptom = resObj.genSymptom;
-            litFollowgen = resObj.genFollow1;
+            litFollow = resObj.genFollow1;
             litTreatment = resObj.genTreatment;
             litPossibleSymptoms = resObj.litPossibleSymptoms;
         }
@@ -2010,17 +2010,17 @@ var mode = "diagnosis";
             htmlContent += "<h3>" + litShortDescription + "</h3><p class='healthIssueInfo'>" + issueInfo.DescriptionShort + "</p>";
         }
 
-        //if (issueInfo.Description != null && issueInfo.Description != "") {
-        //    htmlContent += "<h3>" + litDescription + "</h3><p class='healthIssueInfo'>" + issueInfo.Description + "</p>";
-        //}
+        if (issueInfo.Description != null && issueInfo.Description != "") {
+            htmlContent += "<h3>" + litDescription + "</h3><p class='healthIssueInfo'>" + issueInfo.Description + "</p>";
+        }
 
-        //if (issueInfo.MedicalCondition != null && issueInfo.MedicalCondition != "" && typeof (issueInfo.MedicalCondition) != 'undefined' && issueInfo.MedicalCondition != null) {
-        //    htmlContent += "<h3>" + litOccurrence + " + " + litSymptom + "</h3><p class='healthIssueInfo'>" + issueInfo.MedicalCondition + "</p>";
-        //}
+        if (issueInfo.MedicalCondition != null && issueInfo.MedicalCondition != "" && typeof (issueInfo.MedicalCondition) != 'undefined' && issueInfo.MedicalCondition != null) {
+            htmlContent += "<h3>" + litOccurrence + " + " + litSymptom + "</h3><p class='healthIssueInfo'>" + issueInfo.MedicalCondition + "</p>";
+        }
 
-        //if (issueInfo.TreatmentDescription != null && issueInfo.TreatmentDescription != "") {
-        //    htmlContent += "<h3>" + litFollow + " + " + litTreatment + "</h3><p class='healthIssueInfo'>" + issueInfo.TreatmentDescription + "</p>";
-        //}
+        if (issueInfo.TreatmentDescription != null && issueInfo.TreatmentDescription != "") {
+            htmlContent += "<h3>" + litFollow + " + " + litTreatment + "</h3><p class='healthIssueInfo'>" + issueInfo.TreatmentDescription + "</p>";
+        }
 
         if (issueInfo.PossibleSymptoms != "" && issueInfo.PossibleSymptoms != null) {
             htmlContent += "<h3>" + litPossibleSymptoms + "</h3><p class='healthIssueInfo'>" + issueInfo.PossibleSymptoms + "</p>";
