@@ -1,0 +1,571 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AEDDF2731E8ED9E100D848D0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDDF2721E8ED9E100D848D0 /* main.m */; };
+		AEDDF2761E8ED9E100D848D0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDDF2751E8ED9E100D848D0 /* AppDelegate.m */; };
+		AEDDF2791E8ED9E100D848D0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDDF2781E8ED9E100D848D0 /* ViewController.m */; };
+		AEDDF27C1E8ED9E100D848D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEDDF27A1E8ED9E100D848D0 /* Main.storyboard */; };
+		AEDDF27E1E8ED9E100D848D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEDDF27D1E8ED9E100D848D0 /* Assets.xcassets */; };
+		AEDDF2811E8ED9E100D848D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEDDF27F1E8ED9E100D848D0 /* LaunchScreen.storyboard */; };
+		AEDDF2B11E8EDAC800D848D0 /* Gender.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDDF2B01E8EDAC800D848D0 /* Gender.m */; };
+		AEDDF2B41E8EDB3600D848D0 /* SelectorStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDDF2B31E8EDB3600D848D0 /* SelectorStatus.m */; };
+		AEDDF2B71E8EDB9900D848D0 /* HealthItem.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDDF2B61E8EDB9900D848D0 /* HealthItem.m */; };
+		AEDDF2BA1E8EDBDE00D848D0 /* HealthSymptomSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDDF2B91E8EDBDE00D848D0 /* HealthSymptomSelector.m */; };
+		AEDDF2BD1E8EDCCE00D848D0 /* HealthIssueInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDDF2BC1E8EDCCE00D848D0 /* HealthIssueInfo.m */; };
+		AEDDF2C01E8EDD9A00D848D0 /* HealthDiagnosis.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDDF2BF1E8EDD9A00D848D0 /* HealthDiagnosis.m */; };
+		AEDDF2C31E8EDF5200D848D0 /* AccessToken.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDDF2C21E8EDF5200D848D0 /* AccessToken.m */; };
+		AEDDF2C61E8EE0A000D848D0 /* DiagnosisClient.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDDF2C51E8EE0A000D848D0 /* DiagnosisClient.m */; };
+		AEDDF2DA1E8EFF3300D848D0 /* KVCBaseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDDF2CA1E8EFF3300D848D0 /* KVCBaseObject.m */; };
+		AEDDF2DB1E8EFF3300D848D0 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDDF2CC1E8EFF3300D848D0 /* NSObject+SBJSON.m */; };
+		AEDDF2DC1E8EFF3300D848D0 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDDF2CE1E8EFF3300D848D0 /* NSString+SBJSON.m */; };
+		AEDDF2DD1E8EFF3300D848D0 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDDF2D01E8EFF3300D848D0 /* SBJSON.m */; };
+		AEDDF2DE1E8EFF3300D848D0 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDDF2D21E8EFF3300D848D0 /* SBJsonBase.m */; };
+		AEDDF2DF1E8EFF3300D848D0 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDDF2D41E8EFF3300D848D0 /* SBJsonParser.m */; };
+		AEDDF2E01E8EFF3300D848D0 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDDF2D61E8EFF3300D848D0 /* SBJsonWriter.m */; };
+		AEDDF2E11E8EFF3300D848D0 /* NSObject+setValuesForKeysWithJSONDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDDF2D91E8EFF3300D848D0 /* NSObject+setValuesForKeysWithJSONDictionary.m */; };
+		AEDDF2E31E90021700D848D0 /* AccessTokenTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDDF2E21E90021700D848D0 /* AccessTokenTest.m */; };
+		AEDDF2E51E90039100D848D0 /* HealthItemTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDDF2E41E90039100D848D0 /* HealthItemTest.m */; };
+		AEDDF2E71E90043800D848D0 /* DiagnosisClientTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDDF2E61E90043800D848D0 /* DiagnosisClientTest.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AEDDF2881E8ED9E100D848D0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AEDDF2661E8ED9E100D848D0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AEDDF26D1E8ED9E100D848D0;
+			remoteInfo = "ApiMedic Client";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AEDDF26E1E8ED9E100D848D0 /* ApiMedic Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ApiMedic Client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEDDF2721E8ED9E100D848D0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AEDDF2741E8ED9E100D848D0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		AEDDF2751E8ED9E100D848D0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		AEDDF2771E8ED9E100D848D0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		AEDDF2781E8ED9E100D848D0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		AEDDF27B1E8ED9E100D848D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AEDDF27D1E8ED9E100D848D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AEDDF2801E8ED9E100D848D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AEDDF2821E8ED9E100D848D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AEDDF2871E8ED9E100D848D0 /* ApiMedic ClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ApiMedic ClientTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEDDF28D1E8ED9E100D848D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AEDDF2AF1E8EDAC800D848D0 /* Gender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gender.h; sourceTree = "<group>"; };
+		AEDDF2B01E8EDAC800D848D0 /* Gender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gender.m; sourceTree = "<group>"; };
+		AEDDF2B21E8EDB3600D848D0 /* SelectorStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectorStatus.h; sourceTree = "<group>"; };
+		AEDDF2B31E8EDB3600D848D0 /* SelectorStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectorStatus.m; sourceTree = "<group>"; };
+		AEDDF2B51E8EDB9900D848D0 /* HealthItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthItem.h; sourceTree = "<group>"; };
+		AEDDF2B61E8EDB9900D848D0 /* HealthItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthItem.m; sourceTree = "<group>"; };
+		AEDDF2B81E8EDBDE00D848D0 /* HealthSymptomSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthSymptomSelector.h; sourceTree = "<group>"; };
+		AEDDF2B91E8EDBDE00D848D0 /* HealthSymptomSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthSymptomSelector.m; sourceTree = "<group>"; };
+		AEDDF2BB1E8EDCCE00D848D0 /* HealthIssueInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthIssueInfo.h; sourceTree = "<group>"; };
+		AEDDF2BC1E8EDCCE00D848D0 /* HealthIssueInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthIssueInfo.m; sourceTree = "<group>"; };
+		AEDDF2BE1E8EDD9A00D848D0 /* HealthDiagnosis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthDiagnosis.h; sourceTree = "<group>"; };
+		AEDDF2BF1E8EDD9A00D848D0 /* HealthDiagnosis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthDiagnosis.m; sourceTree = "<group>"; };
+		AEDDF2C11E8EDF5200D848D0 /* AccessToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessToken.h; sourceTree = "<group>"; };
+		AEDDF2C21E8EDF5200D848D0 /* AccessToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessToken.m; sourceTree = "<group>"; };
+		AEDDF2C41E8EE0A000D848D0 /* DiagnosisClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiagnosisClient.h; sourceTree = "<group>"; };
+		AEDDF2C51E8EE0A000D848D0 /* DiagnosisClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiagnosisClient.m; sourceTree = "<group>"; };
+		AEDDF2C81E8EFF3300D848D0 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		AEDDF2C91E8EFF3300D848D0 /* KVCBaseObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVCBaseObject.h; sourceTree = "<group>"; };
+		AEDDF2CA1E8EFF3300D848D0 /* KVCBaseObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KVCBaseObject.m; sourceTree = "<group>"; };
+		AEDDF2CB1E8EFF3300D848D0 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		AEDDF2CC1E8EFF3300D848D0 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		AEDDF2CD1E8EFF3300D848D0 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		AEDDF2CE1E8EFF3300D848D0 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		AEDDF2CF1E8EFF3300D848D0 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		AEDDF2D01E8EFF3300D848D0 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
+		AEDDF2D11E8EFF3300D848D0 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		AEDDF2D21E8EFF3300D848D0 /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
+		AEDDF2D31E8EFF3300D848D0 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		AEDDF2D41E8EFF3300D848D0 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		AEDDF2D51E8EFF3300D848D0 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		AEDDF2D61E8EFF3300D848D0 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		AEDDF2D81E8EFF3300D848D0 /* NSObject+setValuesForKeysWithJSONDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+setValuesForKeysWithJSONDictionary.h"; sourceTree = "<group>"; };
+		AEDDF2D91E8EFF3300D848D0 /* NSObject+setValuesForKeysWithJSONDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+setValuesForKeysWithJSONDictionary.m"; sourceTree = "<group>"; };
+		AEDDF2E21E90021700D848D0 /* AccessTokenTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessTokenTest.m; sourceTree = "<group>"; };
+		AEDDF2E41E90039100D848D0 /* HealthItemTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthItemTest.m; sourceTree = "<group>"; };
+		AEDDF2E61E90043800D848D0 /* DiagnosisClientTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiagnosisClientTest.m; sourceTree = "<group>"; };
+		AEDDF2E81E901AD700D848D0 /* testing_passwords.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = testing_passwords.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AEDDF26B1E8ED9E100D848D0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AEDDF2841E8ED9E100D848D0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AEDDF2651E8ED9E100D848D0 = {
+			isa = PBXGroup;
+			children = (
+				AEDDF2701E8ED9E100D848D0 /* ApiMedic Client */,
+				AEDDF28A1E8ED9E100D848D0 /* ApiMedic ClientTests */,
+				AEDDF26F1E8ED9E100D848D0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AEDDF26F1E8ED9E100D848D0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AEDDF26E1E8ED9E100D848D0 /* ApiMedic Client.app */,
+				AEDDF2871E8ED9E100D848D0 /* ApiMedic ClientTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AEDDF2701E8ED9E100D848D0 /* ApiMedic Client */ = {
+			isa = PBXGroup;
+			children = (
+				AEDDF2961E8EDA2400D848D0 /* Priaid.Diagnosis.Client */,
+				AEDDF2741E8ED9E100D848D0 /* AppDelegate.h */,
+				AEDDF2751E8ED9E100D848D0 /* AppDelegate.m */,
+				AEDDF2771E8ED9E100D848D0 /* ViewController.h */,
+				AEDDF2781E8ED9E100D848D0 /* ViewController.m */,
+				AEDDF27A1E8ED9E100D848D0 /* Main.storyboard */,
+				AEDDF27D1E8ED9E100D848D0 /* Assets.xcassets */,
+				AEDDF27F1E8ED9E100D848D0 /* LaunchScreen.storyboard */,
+				AEDDF2821E8ED9E100D848D0 /* Info.plist */,
+				AEDDF2711E8ED9E100D848D0 /* Supporting Files */,
+			);
+			path = "ApiMedic Client";
+			sourceTree = "<group>";
+		};
+		AEDDF2711E8ED9E100D848D0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AEDDF2721E8ED9E100D848D0 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AEDDF28A1E8ED9E100D848D0 /* ApiMedic ClientTests */ = {
+			isa = PBXGroup;
+			children = (
+				AEDDF2E61E90043800D848D0 /* DiagnosisClientTest.m */,
+				AEDDF2E41E90039100D848D0 /* HealthItemTest.m */,
+				AEDDF2E21E90021700D848D0 /* AccessTokenTest.m */,
+				AEDDF28D1E8ED9E100D848D0 /* Info.plist */,
+				AEDDF2E81E901AD700D848D0 /* testing_passwords.h */,
+			);
+			path = "ApiMedic ClientTests";
+			sourceTree = "<group>";
+		};
+		AEDDF2961E8EDA2400D848D0 /* Priaid.Diagnosis.Client */ = {
+			isa = PBXGroup;
+			children = (
+				AEDDF2C71E8EFF3300D848D0 /* JSON Encoder */,
+				AEDDF2D71E8EFF3300D848D0 /* JSON Extensions */,
+				AEDDF2981E8EDA2400D848D0 /* Model */,
+				AEDDF2C41E8EE0A000D848D0 /* DiagnosisClient.h */,
+				AEDDF2C51E8EE0A000D848D0 /* DiagnosisClient.m */,
+			);
+			path = Priaid.Diagnosis.Client;
+			sourceTree = "<group>";
+		};
+		AEDDF2981E8EDA2400D848D0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AEDDF2AF1E8EDAC800D848D0 /* Gender.h */,
+				AEDDF2B01E8EDAC800D848D0 /* Gender.m */,
+				AEDDF2B21E8EDB3600D848D0 /* SelectorStatus.h */,
+				AEDDF2B31E8EDB3600D848D0 /* SelectorStatus.m */,
+				AEDDF2B51E8EDB9900D848D0 /* HealthItem.h */,
+				AEDDF2B61E8EDB9900D848D0 /* HealthItem.m */,
+				AEDDF2B81E8EDBDE00D848D0 /* HealthSymptomSelector.h */,
+				AEDDF2B91E8EDBDE00D848D0 /* HealthSymptomSelector.m */,
+				AEDDF2BB1E8EDCCE00D848D0 /* HealthIssueInfo.h */,
+				AEDDF2BC1E8EDCCE00D848D0 /* HealthIssueInfo.m */,
+				AEDDF2BE1E8EDD9A00D848D0 /* HealthDiagnosis.h */,
+				AEDDF2BF1E8EDD9A00D848D0 /* HealthDiagnosis.m */,
+				AEDDF2C11E8EDF5200D848D0 /* AccessToken.h */,
+				AEDDF2C21E8EDF5200D848D0 /* AccessToken.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AEDDF2C71E8EFF3300D848D0 /* JSON Encoder */ = {
+			isa = PBXGroup;
+			children = (
+				AEDDF2C81E8EFF3300D848D0 /* JSON.h */,
+				AEDDF2C91E8EFF3300D848D0 /* KVCBaseObject.h */,
+				AEDDF2CA1E8EFF3300D848D0 /* KVCBaseObject.m */,
+				AEDDF2CB1E8EFF3300D848D0 /* NSObject+SBJSON.h */,
+				AEDDF2CC1E8EFF3300D848D0 /* NSObject+SBJSON.m */,
+				AEDDF2CD1E8EFF3300D848D0 /* NSString+SBJSON.h */,
+				AEDDF2CE1E8EFF3300D848D0 /* NSString+SBJSON.m */,
+				AEDDF2CF1E8EFF3300D848D0 /* SBJSON.h */,
+				AEDDF2D01E8EFF3300D848D0 /* SBJSON.m */,
+				AEDDF2D11E8EFF3300D848D0 /* SBJsonBase.h */,
+				AEDDF2D21E8EFF3300D848D0 /* SBJsonBase.m */,
+				AEDDF2D31E8EFF3300D848D0 /* SBJsonParser.h */,
+				AEDDF2D41E8EFF3300D848D0 /* SBJsonParser.m */,
+				AEDDF2D51E8EFF3300D848D0 /* SBJsonWriter.h */,
+				AEDDF2D61E8EFF3300D848D0 /* SBJsonWriter.m */,
+			);
+			path = "JSON Encoder";
+			sourceTree = "<group>";
+		};
+		AEDDF2D71E8EFF3300D848D0 /* JSON Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AEDDF2D81E8EFF3300D848D0 /* NSObject+setValuesForKeysWithJSONDictionary.h */,
+				AEDDF2D91E8EFF3300D848D0 /* NSObject+setValuesForKeysWithJSONDictionary.m */,
+			);
+			path = "JSON Extensions";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AEDDF26D1E8ED9E100D848D0 /* ApiMedic Client */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AEDDF2901E8ED9E100D848D0 /* Build configuration list for PBXNativeTarget "ApiMedic Client" */;
+			buildPhases = (
+				AEDDF26A1E8ED9E100D848D0 /* Sources */,
+				AEDDF26B1E8ED9E100D848D0 /* Frameworks */,
+				AEDDF26C1E8ED9E100D848D0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ApiMedic Client";
+			productName = "ApiMedic Client";
+			productReference = AEDDF26E1E8ED9E100D848D0 /* ApiMedic Client.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AEDDF2861E8ED9E100D848D0 /* ApiMedic ClientTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AEDDF2931E8ED9E100D848D0 /* Build configuration list for PBXNativeTarget "ApiMedic ClientTests" */;
+			buildPhases = (
+				AEDDF2831E8ED9E100D848D0 /* Sources */,
+				AEDDF2841E8ED9E100D848D0 /* Frameworks */,
+				AEDDF2851E8ED9E100D848D0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AEDDF2891E8ED9E100D848D0 /* PBXTargetDependency */,
+			);
+			name = "ApiMedic ClientTests";
+			productName = "ApiMedic ClientTests";
+			productReference = AEDDF2871E8ED9E100D848D0 /* ApiMedic ClientTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AEDDF2661E8ED9E100D848D0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = Priaid;
+				TargetAttributes = {
+					AEDDF26D1E8ED9E100D848D0 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 8PQCYMP6UE;
+						ProvisioningStyle = Automatic;
+					};
+					AEDDF2861E8ED9E100D848D0 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 8PQCYMP6UE;
+						ProvisioningStyle = Automatic;
+						TestTargetID = AEDDF26D1E8ED9E100D848D0;
+					};
+				};
+			};
+			buildConfigurationList = AEDDF2691E8ED9E100D848D0 /* Build configuration list for PBXProject "ApiMedic Client" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AEDDF2651E8ED9E100D848D0;
+			productRefGroup = AEDDF26F1E8ED9E100D848D0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AEDDF26D1E8ED9E100D848D0 /* ApiMedic Client */,
+				AEDDF2861E8ED9E100D848D0 /* ApiMedic ClientTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AEDDF26C1E8ED9E100D848D0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AEDDF2811E8ED9E100D848D0 /* LaunchScreen.storyboard in Resources */,
+				AEDDF27E1E8ED9E100D848D0 /* Assets.xcassets in Resources */,
+				AEDDF27C1E8ED9E100D848D0 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AEDDF2851E8ED9E100D848D0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AEDDF26A1E8ED9E100D848D0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AEDDF2C01E8EDD9A00D848D0 /* HealthDiagnosis.m in Sources */,
+				AEDDF2DE1E8EFF3300D848D0 /* SBJsonBase.m in Sources */,
+				AEDDF2B41E8EDB3600D848D0 /* SelectorStatus.m in Sources */,
+				AEDDF2B11E8EDAC800D848D0 /* Gender.m in Sources */,
+				AEDDF2B71E8EDB9900D848D0 /* HealthItem.m in Sources */,
+				AEDDF2791E8ED9E100D848D0 /* ViewController.m in Sources */,
+				AEDDF2761E8ED9E100D848D0 /* AppDelegate.m in Sources */,
+				AEDDF2E11E8EFF3300D848D0 /* NSObject+setValuesForKeysWithJSONDictionary.m in Sources */,
+				AEDDF2731E8ED9E100D848D0 /* main.m in Sources */,
+				AEDDF2C61E8EE0A000D848D0 /* DiagnosisClient.m in Sources */,
+				AEDDF2DA1E8EFF3300D848D0 /* KVCBaseObject.m in Sources */,
+				AEDDF2DF1E8EFF3300D848D0 /* SBJsonParser.m in Sources */,
+				AEDDF2DD1E8EFF3300D848D0 /* SBJSON.m in Sources */,
+				AEDDF2C31E8EDF5200D848D0 /* AccessToken.m in Sources */,
+				AEDDF2E01E8EFF3300D848D0 /* SBJsonWriter.m in Sources */,
+				AEDDF2BA1E8EDBDE00D848D0 /* HealthSymptomSelector.m in Sources */,
+				AEDDF2DB1E8EFF3300D848D0 /* NSObject+SBJSON.m in Sources */,
+				AEDDF2DC1E8EFF3300D848D0 /* NSString+SBJSON.m in Sources */,
+				AEDDF2BD1E8EDCCE00D848D0 /* HealthIssueInfo.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AEDDF2831E8ED9E100D848D0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AEDDF2E71E90043800D848D0 /* DiagnosisClientTest.m in Sources */,
+				AEDDF2E51E90039100D848D0 /* HealthItemTest.m in Sources */,
+				AEDDF2E31E90021700D848D0 /* AccessTokenTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AEDDF2891E8ED9E100D848D0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AEDDF26D1E8ED9E100D848D0 /* ApiMedic Client */;
+			targetProxy = AEDDF2881E8ED9E100D848D0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AEDDF27A1E8ED9E100D848D0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AEDDF27B1E8ED9E100D848D0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AEDDF27F1E8ED9E100D848D0 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AEDDF2801E8ED9E100D848D0 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AEDDF28E1E8ED9E100D848D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		AEDDF28F1E8ED9E100D848D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AEDDF2911E8ED9E100D848D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 8PQCYMP6UE;
+				INFOPLIST_FILE = "ApiMedic Client/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.priaid.apimediclibrary.ApiMedic-Client";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AEDDF2921E8ED9E100D848D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 8PQCYMP6UE;
+				INFOPLIST_FILE = "ApiMedic Client/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.priaid.apimediclibrary.ApiMedic-Client";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		AEDDF2941E8ED9E100D848D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 8PQCYMP6UE;
+				INFOPLIST_FILE = "ApiMedic ClientTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.priaid.apimediclibrary.ApiMedic-ClientTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ApiMedic Client.app/ApiMedic Client";
+			};
+			name = Debug;
+		};
+		AEDDF2951E8ED9E100D848D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 8PQCYMP6UE;
+				INFOPLIST_FILE = "ApiMedic ClientTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.priaid.apimediclibrary.ApiMedic-ClientTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ApiMedic Client.app/ApiMedic Client";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AEDDF2691E8ED9E100D848D0 /* Build configuration list for PBXProject "ApiMedic Client" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AEDDF28E1E8ED9E100D848D0 /* Debug */,
+				AEDDF28F1E8ED9E100D848D0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AEDDF2901E8ED9E100D848D0 /* Build configuration list for PBXNativeTarget "ApiMedic Client" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AEDDF2911E8ED9E100D848D0 /* Debug */,
+				AEDDF2921E8ED9E100D848D0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		AEDDF2931E8ED9E100D848D0 /* Build configuration list for PBXNativeTarget "ApiMedic ClientTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AEDDF2941E8ED9E100D848D0 /* Debug */,
+				AEDDF2951E8ED9E100D848D0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AEDDF2661E8ED9E100D848D0 /* Project object */;
+}

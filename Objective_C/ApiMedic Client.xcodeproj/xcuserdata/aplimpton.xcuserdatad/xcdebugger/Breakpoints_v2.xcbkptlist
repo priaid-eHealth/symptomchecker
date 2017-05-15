@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ApiMedic Client/Priaid.Diagnosis.Client/DiagnosisClient.m"
+            timestampString = "512812739.410625"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
+            landmarkName = "-LoadToken:username:password:url:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ApiMedic ClientTests/DiagnosisClientTest.m"
+            timestampString = "512814445.277235"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "346"
+            endingLineNumber = "346"
+            landmarkName = "-testLoadBodyLocations"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ApiMedic ClientTests/DiagnosisClientTest.m"
+            timestampString = "512814904.455906"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
+            landmarkName = "-testLoadIssueInfo"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__40-[DiagnosisClientTest testLoadIssueInfo]_block_invoke_2"
+                  moduleName = "ApiMedic ClientTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aplimpton/Documents/iPhone/ApiMedic/ObjectiveC/ApiMedic%20Client/ApiMedic%20ClientTests/DiagnosisClientTest.m"
+                  timestampString = "512815075.32454"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "213"
+                  endingLineNumber = "213"
+                  offsetFromSymbolStart = "109">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__40-[DiagnosisClientTest testLoadIssueInfo]_block_invoke_2"
+                  moduleName = "ApiMedic ClientTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aplimpton/Documents/iPhone/ApiMedic/ObjectiveC/ApiMedic%20Client/ApiMedic%20ClientTests/DiagnosisClientTest.m"
+                  timestampString = "512815075.327963"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "213"
+                  endingLineNumber = "213"
+                  offsetFromSymbolStart = "525">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__40-[DiagnosisClientTest testLoadIssueInfo]_block_invoke_2"
+                  moduleName = "ApiMedic ClientTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aplimpton/Documents/iPhone/ApiMedic/ObjectiveC/ApiMedic%20Client/ApiMedic%20ClientTests/DiagnosisClientTest.m"
+                  timestampString = "512815075.332129"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "213"
+                  endingLineNumber = "213"
+                  offsetFromSymbolStart = "922">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__40-[DiagnosisClientTest testLoadIssueInfo]_block_invoke_2"
+                  moduleName = "ApiMedic ClientTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aplimpton/Documents/iPhone/ApiMedic/ObjectiveC/ApiMedic%20Client/ApiMedic%20ClientTests/DiagnosisClientTest.m"
+                  timestampString = "512815075.335347"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "213"
+                  endingLineNumber = "213"
+                  offsetFromSymbolStart = "1044">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
