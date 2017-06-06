@@ -2097,9 +2097,10 @@ var mode = "diagnosis";
                 });
                 var spec = jQuery("<a/>", {
                     "text": this.Name,
-                    //TODO
+                    //TODO possible implementations:
                     //"href": specUrl + "/" + this.Name + "/" + this.ID
-                    "href": specUrl + "?specId=" + this.SpecialistID
+                    //"href": specUrl + "?specId=" + this.SpecialistID
+					"href": specUrl  + "/" + "specId" + this.SpecialistID + ".html"
                 });
 
                 specListElement.append(spec);

@@ -57,7 +57,7 @@
                 mode: "diagnosis",
                 webservice: "https://sandbox-healthservice.priaid.ch",
                 language: "en-gb",
-                specUrl: "sampleSpecialisationPage",
+                specUrl: "sample_specialisation_page",
                 accessToken: userToken
             });
         });
