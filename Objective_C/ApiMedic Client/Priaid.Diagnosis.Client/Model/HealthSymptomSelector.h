@@ -43,7 +43,7 @@
 
 /// Professional name
 @property (strong, nonatomic) NSString *ProfName;
-/// Rad flag indicator
+/// Red flag indicator
 @property (nonatomic) Boolean HasRedFlag;
 /// List of sublocation ids where this symptom is shown
 @property (strong, nonatomic) NSMutableArray<NSNumber*> *HealthSymptomLocationIDs;

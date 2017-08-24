@@ -34,7 +34,13 @@
 	<?php 
 
 	// session_start(); // this causes some issues with certain servers, try this if it's working with this line or not.
-
+		
+	/**
+	* For Live API service use the Live API endpoints:
+	* Instead of the Sandbox Authservice endpoint "https://sandbox-authservice.priaid.ch/login" you should use the Live Authservice endpoint "https://authservice.priaid.ch/login" 
+	* Instead of the Sandbox Healthservice endpoint "https://sandbox-healthservice.priaid.ch" you should use the Live Authservice endpoint "https://healthservice.priaid.ch" 
+    */
+	
 	if ( !isset( $_SESSION['userToken']) || !isset( $_SESSION['tokenExpireTime']) || time() >= $_SESSION['tokenExpireTime'] )
 	{
 		require 'token_generator.php';
