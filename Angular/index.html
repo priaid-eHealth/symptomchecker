@@ -71,17 +71,17 @@
                 <p>Symptoms can be either called to receive the full list of symptoms or a subset of symptoms (e.g. all symptoms of a body sublocation).<p>
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="alert alert-success" ng-show="symptoms != ''">
+                            <div class="alert alert-success" *ngIf="symptoms != ''">
                                 <pre class="data">{{symptoms | json}}</pre>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="alert alert-warning" ng-show="symptomsConfig != ''">
+                            <div class="alert alert-warning" *ngIf="symptomsConfig != ''">
                                 <pre class="data">{{symptomsConfig | json}}</pre>
                             </div>
                         </div>
                     </div>
-                    <div class="alert alert-danger" ng-show="symptomsError != ''">
+                    <div class="alert alert-danger" *ngIf="symptomsError != ''">
                         <pre class="data">{{symptomsError | json}}</pre>
                     </div>
             </div>
@@ -91,7 +91,7 @@
                 <a ng-click="loadIssues()" role="button" class="btn btn-success">
                     GET
                 </a>
-                <a ng-click="loadSymptoms()" role="button">
+                <a ng-click="loadIssues()" role="button">
                     /issues
                 </a>
             </div>
@@ -99,17 +99,17 @@
                 <p>Issues can be either called to receive the full list of issues or a subset of issues (e.g. all issues of a diagnosis).</p>
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="alert alert-success" ng-show="issues != ''">
+                        <div class="alert alert-success" *ngIf="issues != ''">
                             <pre class="data">{{issues | json}}</pre>
                         </div>  
                     </div>
                     <div class="col-md-6">
-                        <div class="alert alert-warning" ng-show="issuesConfig != ''">
+                        <div class="alert alert-warning" *ngIf="issuesConfig != ''">
                             <pre class="data">{{issuesConfig | json}}</pre>
                         </div>
                     </div>
                 </div>
-                <div class="alert alert-danger" ng-show="issuesError != ''">
+                <div class="alert alert-danger" *ngIf="issuesError != ''">
                     <pre class="data">{{issuesError | json}}</pre>
                 </div>
             </div>
@@ -130,17 +130,17 @@
                 <p>Issue info can be called to receive all information about a health issue. The short description gives a short overview. A longer information can consist of "Description", "MedicalCondition", "TreatmentDescription".</p>
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="alert alert-success" ng-show="issueInfo != ''">
+                        <div class="alert alert-success" *ngIf="issueInfo != ''">
                             <pre class="data">{{issueInfo | json}}</pre>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="alert alert-warning" ng-show="issueInfoConfig != ''">
+                        <div class="alert alert-warning" *ngIf="issueInfoConfig != ''">
                             <pre class="data">{{issueInfoConfig | json}}</pre>
                         </div>
                     </div>
                 </div>
-                <div class="alert alert-danger" ng-show="issueInfoError != ''">
+                <div class="alert alert-danger" *ngIf="issueInfoError != ''">
                     <pre class="data">{{issueInfoError | json}}</pre>
                 </div>
             </div>
@@ -172,17 +172,17 @@
                 <p>The diagnosis is the core function of the symptom-checker to compute the potential health issues based on a set of symptoms, gender and age.</p>
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="alert alert-success" ng-show="diagnosis != ''">
+                        <div class="alert alert-success" *ngIf="diagnosis != ''">
                             <pre class="data">{{diagnosis | json}}</pre>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="alert alert-warning" ng-show="diagnosisConfig != ''">
+                        <div class="alert alert-warning" *ngIf="diagnosisConfig != ''">
                             <pre class="data">{{diagnosisConfig | json}}</pre>
                         </div>
                     </div>
                 </div>
-                <div class="alert alert-danger" ng-show="diagnosisError != ''">
+                <div class="alert alert-danger" *ngIf="diagnosisError != ''">
                     <pre class="data">{{diagnosisError | json}}</pre>
                 </div>
             </div>
@@ -214,17 +214,17 @@
                 <p>The diagnosis is the core function of the symptom-checker to compute the potential health issues based on a set of symptoms, gender and age, but instead of getting computed diagnosis, you can also get list of suggested specialisations for calulated diseases</p>
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="alert alert-success" ng-show="specialisations != ''">
+                        <div class="alert alert-success" *ngIf="specialisations != ''">
                             <pre class="data">{{specialisations | json}}</pre>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="alert alert-warning" ng-show="specialisationsConfig != ''">
+                        <div class="alert alert-warning" *ngIf="specialisationsConfig != ''">
                             <pre class="data">{{specialisationsConfig | json}}</pre>
                         </div>
                     </div>
                 </div>
-                <div class="alert alert-danger" ng-show="specialisationsError != ''">
+                <div class="alert alert-danger" *ngIf="specialisationsError != ''">
                     <pre class="data">{{specialisationsError | json}}</pre>
                 </div>
             </div>
@@ -256,17 +256,17 @@
                 <p>The proposed symptoms can be called to request additional symptoms which can be related to the given symptoms in order to refine the diagnosis.</p>
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="alert alert-success" ng-show="proposedSymptoms != ''">
+                        <div class="alert alert-success" *ngIf="proposedSymptoms != ''">
                             <pre class="data">{{proposedSymptoms | json}}</pre>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="alert alert-warning" ng-show="proposedSymptomsConfig != ''">
+                        <div class="alert alert-warning" *ngIf="proposedSymptomsConfig != ''">
                             <pre class="data">{{proposedSymptomsConfig | json}}</pre>
                         </div>
                     </div>
                 </div>
-                <div class="alert alert-danger" ng-show="proposedSymptomsError != ''">
+                <div class="alert alert-danger" *ngIf="proposedSymptomsError != ''">
                     <pre class="data">{{proposedSymptomsError | json}}</pre>
                 </div>
             </div>
@@ -284,17 +284,17 @@
                 <p>Body locations can be called to receive all the body locations</p>
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="alert alert-success" ng-show="bodyLocations != ''">
+                        <div class="alert alert-success" *ngIf="bodyLocations != ''">
                             <pre class="data">{{bodyLocations | json}}</pre>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="alert alert-warning" ng-show="bodyLocationsConfig != ''">
+                        <div class="alert alert-warning" *ngIf="bodyLocationsConfig != ''">
                             <pre class="data">{{bodyLocationsConfig | json}}</pre>
                         </div>
                     </div>
                 </div>
-                <div class="alert alert-danger" ng-show="bodyLocationsError != ''">
+                <div class="alert alert-danger" *ngIf="bodyLocationsError != ''">
                     <pre class="data">{{bodyLocationsError | json}}</pre>
                 </div>
             </div>
@@ -315,17 +315,17 @@
                 <p>Body sublocations can be called to receive all the body sub locations from a body location.</p>
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="alert alert-success" ng-show="bodySublocations != ''">
+                        <div class="alert alert-success" *ngIf="bodySublocations != ''">
                             <pre class="data">{{bodySublocations | json}}</pre>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="alert alert-warning" ng-show="bodySublocationsConfig != ''">
+                        <div class="alert alert-warning" *ngIf="bodySublocationsConfig != ''">
                             <pre class="data">{{bodySublocationsConfig | json}}</pre>
                         </div>
                     </div>
                 </div>
-                <div class="alert alert-danger" ng-show="bodySublocationsError != ''">
+                <div class="alert alert-danger" *ngIf="bodySublocationsError != ''">
                     <pre class="data">{{bodySublocationsError | json}}</pre>
                 </div>
             </div>
@@ -364,17 +364,17 @@
                 <p>Symptoms in body sublocations can be called to receive all the symptoms in a body sub location.</p>
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="alert alert-success" ng-show="bodySublocationSymptoms != ''">
+                        <div class="alert alert-success" *ngIf="bodySublocationSymptoms != ''">
                             <pre class="data">{{bodySublocationSymptoms | json}}</pre>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="alert alert-warning" ng-show="bodySublocationSymptomsConfig != ''">
+                        <div class="alert alert-warning" *ngIf="bodySublocationSymptomsConfig != ''">
                             <pre class="data">{{bodySublocationSymptomsConfig | json}}</pre>
                         </div>
                     </div>
                 </div>
-                <div class="alert alert-danger" ng-show="bodySublocationSymptomsError != ''">
+                <div class="alert alert-danger" *ngIf="bodySublocationSymptomsError != ''">
                     <pre class="data">{{bodySublocationSymptomsError | json}}</pre>
                 </div>
             </div>
@@ -395,17 +395,17 @@
                 <p>Red flag texts are recommendations to the patient for a higher urgency or severeness of the possible symptoms. As an example a patient with pain in the breast might have a heart attack and therefore the patient should be warned about the urgency and severeness of the matter.</p>
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="alert alert-success" ng-show="redFlagText != ''">
+                        <div class="alert alert-success" *ngIf="redFlagText != ''">
                             <pre class="data">{{redFlagText | json}}</pre>
                         </div>   
                     </div>
                     <div class="col-md-6">
-                        <div class="alert alert-warning" ng-show="redFlagTextConfig != ''">
+                        <div class="alert alert-warning" *ngIf="redFlagTextConfig != ''">
                             <pre class="data">{{redFlagTextConfig | json}}</pre>
                         </div>
                     </div>
                 </div>
-                <div class="alert alert-danger" ng-show="redFlagTextError != ''">
+                <div class="alert alert-danger" *ngIf="redFlagTextError != ''">
                     <pre class="data">{{redFlagTextError | json}}</pre>
                 </div>
             </div>
