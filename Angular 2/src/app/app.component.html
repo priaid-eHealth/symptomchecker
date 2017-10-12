@@ -1,0 +1,387 @@
+    <div class="container">
+        <h3>Priaid health service angular demo</h3>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Enter your token here to start demo. You can get a token <a href="https://sandbox-authservice.priaid.ch/docs.html" target="_blank">here</a>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <textarea rows='8' class="form-control" (change)="doTextareaValueChange($event)" placeholder="Enter your token here">{{token}}</textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Language</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control-static" #t1  (change)="changeLanguage(t1.value)">
+                                      <option *ngFor="let item of languages"  [value]="item | json">{{item.value}}</option>
+                                    </select>
+                                </div>
+                                <label class="col-sm-4 control-label">Format</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control-static" #t (change) ="changeFormat(t.value)">
+                                      <option *ngFor="let item of formats" [value]="item | json">{{item.value}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <a (click)="loadSymptoms()" role="button" class="btn btn-success">
+                    GET
+                </a>
+                <a (click)="loadSymptoms()" role="button">
+                    /symptoms
+                </a>
+            </div>
+            <div class="panel-body">
+                <p>Symptoms can be either called to receive the full list of symptoms or a subset of symptoms (e.g. all symptoms of a body sublocation).<p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="alert alert-success" *ngIf="symptoms != ''">
+                                <pre class="data">{{this.symptoms | json}}</pre>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="alert alert-warning" *ngIf="symptomsConfig != ''">
+                                <pre class="data">{{symptomsConfig | json}}</pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alert alert-danger" *ngIf="symptomsError != ''">
+                        <pre class="data">{{symptomsError | json}}</pre>
+                    </div>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <a (click)="loadIssues()" role="button" class="btn btn-success">
+                    GET
+                </a>
+                <a (click)="loadIssues()" role="button">
+                    /issues
+                </a>
+            </div>
+            <div class="panel-body">
+                <p>Issues can be either called to receive the full list of issues or a subset of issues (e.g. all issues of a diagnosis).</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="alert alert-success" *ngIf="issues != ''">
+                            <pre class="data">{{issues | json}}</pre>
+                        </div>  
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-warning" *ngIf="issuesConfig != ''">
+                            <pre class="data">{{issuesConfig | json}}</pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="alert alert-danger" *ngIf="issuesError != ''">
+                    <pre class="data">{{issuesError | json}}</pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <a (click)="loadIssueInfo(issueId)" role="button" class="btn btn-success">
+                    GET
+                </a>
+                <a (click)="loadIssueInfo(issueId)" role="button">
+                    /issues/{{issueId}}/info
+                </a>
+                <div class="pull-right">
+                    Issue id:<input type='number' [(ngModel)]="issueId" class='single-number' />
+                </div>
+            </div>
+            <div class="panel-body">
+                <p>Issue info can be called to receive all information about a health issue. The short description gives a short overview. A longer information can consist of "Description", "MedicalCondition", "TreatmentDescription".</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="alert alert-success" *ngIf="issueInfo != ''">
+                            <pre class="data">{{issueInfo | json}}</pre>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-warning" *ngIf="issueInfoConfig != ''">
+                            <pre class="data">{{issueInfoConfig | json}}</pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="alert alert-danger" *ngIf="issueInfoError != ''">
+                    <pre class="data">{{issueInfoError | json}}</pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <a (click)="loadDiagnosis(selectedSymptoms,gender,yearOfBirth)" role="button" class="btn btn-success">
+                    GET
+                </a>
+                <a (click)="loadDiagnosis(selectedSymptoms,gender,yearOfBirth)" role="button">
+                    /diagnosis
+                </a>
+                <div class="pull-right">
+                    Symptoms (comma separated ids):<input type='text' [(ngModel)]='selectedSymptoms' />
+                    |
+                    <label>
+                        <input type="radio" [(ngModel)]="gender.value" value="male">
+                        Male
+                    </label>
+                    <label>
+                        <input type="radio" [(ngModel)]="gender.value" value="female">
+                        Female
+                    </label>
+                    |
+                    Year of born:<input type='number' [(ngModel)]='yearOfBirth' class='single-number' />
+                </div>
+            </div>
+            <div class="panel-body">
+                <p>The diagnosis is the core function of the symptom-checker to compute the potential health issues based on a set of symptoms, gender and age.</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="alert alert-success" *ngIf="diagnosis != ''">
+                            <pre class="data">{{diagnosis | json}}</pre>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-warning" *ngIf="diagnosisConfig != ''">
+                            <pre class="data">{{diagnosisConfig | json}}</pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="alert alert-danger" *ngIf="diagnosisError != ''">
+                    <pre class="data">{{diagnosisError | json}}</pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <a (click)="loadSpecialisations(selectedSymptoms,gender,yearOfBirth)" role="button" class="btn btn-success">
+                    GET
+                </a>
+                <a (click)="loadSpecialisations(selectedSymptoms,gender,yearOfBirth)" role="button">
+                    /specialisations
+                </a>
+                <div class="pull-right">
+                    Symptoms (comma separated ids):<input type='text' [(ngModel)]='selectedSymptoms' />
+                    |
+                    <label>
+                        <input type="radio" [(ngModel)]="gender.value" value="male">
+                        Male
+                    </label>
+                    <label>
+                        <input type="radio" [(ngModel)]="gender.value" value="female">
+                        Female
+                    </label>
+                    |
+                    Year of born:<input type='number' [(ngModel)]='yearOfBirth' class='single-number' />
+                </div>
+            </div>
+            <div class="panel-body">
+                <p>The diagnosis is the core function of the symptom-checker to compute the potential health issues based on a set of symptoms, gender and age, but instead of getting computed diagnosis, you can also get list of suggested specialisations for calulated diseases</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="alert alert-success" *ngIf="specialisations != ''">
+                            <pre class="data">{{specialisations | json}}</pre>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-warning" *ngIf="specialisationsConfig != ''">
+                            <pre class="data">{{specialisationsConfig | json}}</pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="alert alert-danger" *ngIf="specialisationsError != ''">
+                    <pre class="data">{{specialisationsError | json}}</pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <a (click)="loadProposedSymptoms(selectedSymptoms,gender,yearOfBirth)" role="button" class="btn btn-success">
+                    GET
+                </a>
+                <a (click)="loadProposedSymptoms(selectedSymptoms,gender,yearOfBirth)" role="button">
+                    /symptoms/proposed
+                </a>
+                <div class="pull-right">
+                    Symptoms (comma separated ids):<input type='text' [(ngModel)]='selectedSymptoms' />
+                    |
+                    <label>
+                        <input type="radio" [(ngModel)]="gender.value" value="male">
+                        Male
+                    </label>
+                    <label>
+                        <input type="radio" [(ngModel)]="gender.value" value="female">
+                        Female
+                    </label>
+                    |
+                    Year of born:<input type='number' [(ngModel)]='yearOfBirth' class='single-number' />
+                </div>
+            </div>
+            <div class="panel-body">
+                <p>The proposed symptoms can be called to request additional symptoms which can be related to the given symptoms in order to refine the diagnosis.</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="alert alert-success" *ngIf="proposedSymptoms != ''">
+                            <pre class="data">{{proposedSymptoms | json}}</pre>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-warning" *ngIf="proposedSymptomsConfig != ''">
+                            <pre class="data">{{proposedSymptomsConfig | json}}</pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="alert alert-danger" *ngIf="proposedSymptomsError != ''">
+                    <pre class="data">{{proposedSymptomsError | json}}</pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <a (click)="loadBodyLocations()" role="button" class="btn btn-success">
+                    GET
+                </a>
+                <a (click)="loadBodyLocations()" role="button">
+                    /body/locations
+                </a>
+            </div>
+            <div class="panel-body">
+                <p>Body locations can be called to receive all the body locations</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="alert alert-success" *ngIf="bodyLocations != ''">
+                            <pre class="data">{{bodyLocations | json}}</pre>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-warning" *ngIf="bodyLocationsConfig != ''">
+                            <pre class="data">{{bodyLocationsConfig | json}}</pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="alert alert-danger" *ngIf="bodyLocationsError != ''">
+                    <pre class="data">{{bodyLocationsError | json}}</pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <a (click)="loadBodySublocations(bodyLocationId)" role="button" class="btn btn-success">
+                    GET
+                </a>
+                <a (click)="loadBodySublocations(bodyLocationId)" role="button">
+                    /body/locations/{{bodyLocationId}}
+                </a>
+                <div class="pull-right">
+                    Body location id:<input type='number' [(ngModel)]='bodyLocationId' class='single-number' />
+                </div>
+            </div>
+            <div class="panel-body">
+                <p>Body sublocations can be called to receive all the body sub locations from a body location.</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="alert alert-success" *ngIf="bodySublocations != ''">
+                            <pre class="data">{{bodySublocations | json}}</pre>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-warning" *ngIf="bodySublocationsConfig != ''">
+                            <pre class="data">{{bodySublocationsConfig | json}}</pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="alert alert-danger" *ngIf="bodySublocationsError != ''">
+                    <pre class="data">{{bodySublocationsError | json}}</pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+
+                <a (click)="loadBodySublocationSymptoms(bodySublocationId,selectorStatus)" role="button" class="btn btn-success">
+                    GET
+                </a>
+                <a (click)="loadBodySublocationSymptoms(bodySublocationId,selectorStatus)" role="button">
+                    /symptoms/{{bodySublocationId}}/{{selectorStatus.value}}
+                </a>
+                <div class="pull-right">
+                    <label>
+                        <input type="radio" [(ngModel)]="selectorStatus.value" value="man">
+                        Man
+                    </label>
+                    <label>
+                        <input type="radio" [(ngModel)]="selectorStatus.value" value="woman">
+                        Woman
+                    </label>
+                    <label>
+                        <input type="radio" [(ngModel)]="selectorStatus.value" value="boy">
+                        Boy
+                    </label>
+                    <label>
+                        <input type="radio" [(ngModel)]="selectorStatus.value" value="girl">
+                        Girl
+                    </label>
+                    |
+                    Body sublocation id:<input type='number' [(ngModel)]='bodySublocationId' class='single-number' />
+                </div>
+            </div>
+            <div class="panel-body">
+                <p>Symptoms in body sublocations can be called to receive all the symptoms in a body sub location.</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="alert alert-success" *ngIf="bodySublocationSymptoms != ''">
+                            <pre class="data">{{bodySublocationSymptoms | json}}</pre>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-warning" *ngIf="bodySublocationSymptomsConfig != ''">
+                            <pre class="data">{{bodySublocationSymptomsConfig | json}}</pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="alert alert-danger" *ngIf="bodySublocationSymptomsError != ''">
+                    <pre class="data">{{bodySublocationSymptomsError | json}}</pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <a (click)="loadRedFlagText(symptomId)" role="button" class="btn btn-success">
+                    GET
+                </a>
+                <a (click)="loadRedFlagText(symptomId)" role="button">
+                    /redflag
+                </a>
+                <div class="pull-right">
+                    Symptom id:<input type='number' [(ngModel)]='symptomId' />
+                </div>
+            </div>
+            <div class="panel-body">
+                <p>Red flag texts are recommendations to the patient for a higher urgency or severeness of the possible symptoms. As an example a patient with pain in the breast might have a heart attack and therefore the patient should be warned about the urgency and severeness of the matter.</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="alert alert-success" *ngIf="redFlagText != ''">
+                            <pre class="data">{{redFlagText | json}}</pre>
+                        </div>   
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-warning" *ngIf="redFlagTextConfig != ''">
+                            <pre class="data">{{redFlagTextConfig | json}}</pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="alert alert-danger" *ngIf="redFlagTextError != ''">
+                    <pre class="data">{{redFlagTextError | json}}</pre>
+                </div>
+            </div>
+        </div>
+    </div>
