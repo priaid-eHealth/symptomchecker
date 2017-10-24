@@ -12,7 +12,7 @@ public class HealthDiagnosis
     /// <summary>
     /// List of suggested doctor specialisations for this issue
     /// </summary>
-    public List<MatchedSpecialisation> Specialisation;
+    public List<DiagnosedSpecialisation> Specialisation;
 }
 
 

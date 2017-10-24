@@ -16,7 +16,7 @@ import Priaid.Diagnosis.Model.HealthDiagnosis;
 import Priaid.Diagnosis.Model.HealthIssueInfo;
 import Priaid.Diagnosis.Model.HealthItem;
 import Priaid.Diagnosis.Model.HealthSymptomSelector;
-import Priaid.Diagnosis.Model.MatchedSpecialisation;
+import Priaid.Diagnosis.Model.DiagnosedSpecialisation;
 import Priaid.Diagnosis.Model.SelectorStatus;
 
 
@@ -182,7 +182,7 @@ public class SampleDiagnosis {
 
         for (HealthDiagnosis d : diagnosis){
         	String specialistions = "";
-        	for(MatchedSpecialisation spec : d.Specialisation)
+        	for(DiagnosedSpecialisation spec : d.Specialisation)
         		specialistions = specialistions.concat(spec.Name + ", ");
             System.out.println(d.Issue.Name + " - " + d.Issue.Accuracy + "% \nSpecialisations : " + specialistions);
         }
