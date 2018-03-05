@@ -16,7 +16,6 @@ import Priaid.Diagnosis.Model.HealthDiagnosis;
 import Priaid.Diagnosis.Model.HealthIssueInfo;
 import Priaid.Diagnosis.Model.HealthItem;
 import Priaid.Diagnosis.Model.HealthSymptomSelector;
-import Priaid.Diagnosis.Model.DiagnosedSpecialisation;
 import Priaid.Diagnosis.Model.SelectorStatus;
 
 
@@ -273,8 +272,24 @@ public class SampleDiagnosis {
 		    // Load body sublocations symptoms
 		    List<HealthSymptomSelector> selectedSymptoms = LoadSublocationSymptoms(selectedSublocationID);
 		
-		    // Load diagnosis
-		    List<Integer> diagnosis = LoadDiagnosis(selectedSymptoms);
+		    // Load diagnosis (reloading if data is not conclusive)
+		    int count = 0;
+		    int maxTries = 10;
+		    boolean sucess = false;
+		    List<Integer> diagnosis = new ArrayList<Integer>();
+		    while(sucess!=true) {
+		        try {
+		        	diagnosis = LoadDiagnosis(selectedSymptoms);
+		        	sucess= true;
+		        } catch (Exception diagnosisException){
+		           	// reload data if diagnosis result is not conclusive
+		        	selectedLocationID = loadBodyLocations();
+		        	selectedSymptoms = LoadSublocationSymptoms(selectedSublocationID);
+		        	if (++count == maxTries) throw diagnosisException;
+		        sucess=false;
+		        }
+		    }
+		    
 		    
 		    // Load specialisations
 		    LoadSpecialisations(selectedSymptoms);

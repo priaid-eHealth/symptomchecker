@@ -21,4 +21,9 @@ public class DiagnosedIssue extends HealthItem{
     /// Probability for the issue in %
     /// </summary>
     public float Accuracy;
+    
+    
+    public float Ranking;
+    
+    
 }
