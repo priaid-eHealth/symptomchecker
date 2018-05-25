@@ -100,10 +100,10 @@ var redirectMode = false;
 var redirectUrl = "";
 
 /// Terms url
-var termsUrl = "http://apimedic.net/Terms_en-gb.html"; // Your terms html page
+var termsUrl = "http://apimedic.net/resources/enduser_priaid_terms.pdf"; // Replace this with your terms html page which includes the referenced End User Terms of Use and Privacy Policy
 
 /// Privacy url
-var privacyUrl = "http://apimedic.net/Privacy_en-gb.html"; // Your privacy policy html page
+var privacyUrl = "http://apimedic.net/resources/enduser_priaid_privacy.pdf"; // Replace this with your privacy policy html page which includes the referenced End User Privacy Policy and Terms of Use
 
 /// SelectorMode : diagnosis or specialisation
 var mode = "diagnosis";
