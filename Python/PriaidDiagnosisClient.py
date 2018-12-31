@@ -46,7 +46,7 @@ class DiagnosisClient:
             raise ValueError("Argument missing: username")
 
         if not password:
-            raise ValueError("Argument missing: username")
+            raise ValueError("Argument missing: password")
 
         if not authUrl:
             raise ValueError("Argument missing: authServiceUrl")
